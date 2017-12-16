@@ -282,6 +282,7 @@ void CDdangDdaMuckgiDlg::OnBnClickedInput()
 			}
 		}//for loop closed
 
+		//선 예외처리
 		if(temp !=4){ //그어진 선이 아니라면
 
 			bool checkFlag=true;
@@ -289,25 +290,54 @@ void CDdangDdaMuckgiDlg::OnBnClickedInput()
 			CMyVector inputV1(x_point1, y_point1);
 			CMyVector inputV2(x_point2, y_point2);
 
-			//여리랑 성욱이가 구현한 함수는 map이라는 변수가 필요했기 때문에 map을 매개변수에 넣었스미다.
+			//예외처리 1 : 선분이 점을 여러개 포함하는 경우
 			if (CMyVector::checkDoublePoint(inputV1, inputV2, map)) {
 				//여리 테스트
 				MessageBox(_T("Error: 선분에 점이 여러개"));
 				checkFlag = false;
 			}
 
+			//예외처리 : 같은선분임
 			for (int i = 0; i < count + 1; i++) {
 				CMyVector V1(line[i][0], line[i][1]);
 				CMyVector V2(line[i][2], line[i][3]);
-				
- 				if (!CMyVector::sementIntersects(inputV1, inputV2, V1, V2)) {//1(true)이면 선을 그릴수 있음
+				if (inputV1 == V1&&inputV2 == V2 || inputV1 == V2&&inputV2 == V1) {
+					MessageBox(_T("위치를 바꾼경우 같은 선분이 있습니다."));
+					checkFlag = false;
+				}
+			}
+			//예외처리 2 : 선분이 교차하는 경우
+			for (int i = 0; i < count + 1; i++) {
+				CMyVector V1(line[i][0], line[i][1]);
+				CMyVector V2(line[i][2], line[i][3]);
+	
+ 				if (!CMyVector::checkException(inputV1, inputV2, V1, V2)) {//1(true)이면 선을 그릴수 있음
 					MessageBox(_T("Error: 교차")); 
 					checkFlag = false;
 					break;
-				}
-										
-			}//loop for closed
+				}	
 
+				float den, ua, ub;
+				for (int i = 0; i < count + 1; i++) {
+					den = (y_point2 - y_point1) * (line[i][2] - line[i][0])
+						- (x_point2 - x_point1) * (line[i][3] - line[i][1]);
+
+					if (den != 0) {
+						ua = ((x_point2 - x_point1) * (line[i][1] - y_point1)
+							- (y_point2 - y_point1) * (line[i][0] - x_point1)) / den;
+						ub = ((line[i][2] - line[i][0]) * (line[i][1] - y_point1)
+							- (line[i][3] - line[i][1]) * (line[i][0] - x_point1)) / den;
+
+						if (ua > 0 && ua < 1 && ub>0 && ub < 1) {
+							checkFlag = false;
+							MessageBox(_T("Error."));
+							break;
+						}
+					}
+				}
+			}//for loop closed
+
+			//선분을 그릴 수 있는 경우 선분을 긋는다.
 			if (checkFlag == true) {
 				line[count][0] = x_point1;
 				line[count][1] = y_point1;
@@ -347,8 +377,8 @@ void CDdangDdaMuckgiDlg::OnBnClickedInput()
 			//3. 있는 선 위에 같은 선 올리면 안됨. (예외처리가 되어 있음)
 			
 		//계산한 점수는 아래에 설정하면 자동으로 화면에 나타남
-		red_score = 2;
-		blue_score = 1;
+		red_score = 0;
+		blue_score = 0;
 
 		//화면에 출력
 		CString str;
@@ -423,3 +453,4 @@ void CDdangDdaMuckgiDlg::OnBnClickedRestart()
 
 	UpdateData(FALSE);
 }
+

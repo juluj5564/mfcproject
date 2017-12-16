@@ -62,5 +62,6 @@ public:
 
 	//함수 추가
 	CMyVector vec;
+	
 };
 

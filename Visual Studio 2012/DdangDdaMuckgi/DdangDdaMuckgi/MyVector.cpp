@@ -64,6 +64,7 @@ bool CMyVector::sementIntersects(CMyVector a, CMyVector b, CMyVector c, CMyVecto
 		*/
 		if (b < a) swap(a, b);//크기순으로 한 선분내의 점을 정렬
 		if (d < c) swap(c, d);
+
 		return (b< c || d <a || b == c || d == a);//하나라도 참이면 true
 
 	}
@@ -72,22 +73,50 @@ bool CMyVector::sementIntersects(CMyVector a, CMyVector b, CMyVector c, CMyVecto
 
 bool CMyVector::checkException(CMyVector inputA, CMyVector inputB, CMyVector existA, CMyVector existB)
 {
-	//직선 교차 예외처리 보스몹
+	//직선 예외처리 보스몹
 	
 	/*
-		1차적으로 직선상에 다른 점이 있으면 안되는 것 예외처리 추가
-		
+	1. 점-점
 	*/
-	
-	bool answer;
+	if (inputA.x == inputB.x&&inputA.y==inputB.y) {
+		AfxMessageBox(_T("너는 점을 찍음"));
+		return false;
+	}
 
-	answer = sementIntersects(inputA, inputB, existA, existB);//선을 그릴수 있는가? 그릴수 있으면 TRUE
-	return answer;
 	/*
+	2. 선이 이미 있음
+	*/
 
+
+
+	/*
+		3. 직선상에 다른 점이 있으면 안되는 것 예외처리
+		checkDoublePoint()
+	*/
+
+
+	/*
+	4. 그곳에는 점이 없음
+	*/
+
+	/*
+	5. 선이 겹침
+	*/
+
+	//semetIntersects : 선분의 교차를 판단
+	//answer = sementIntersects(inputA, inputB, existA, existB);//선을 그릴수 있는가? 그릴수 있으면 TRUE
+	
+
+	
+	
+
+	//return checkLineCross(inputA.x, inputA.y,inputB.x,inputB.y,existA.x,existA.y,existB.x,existB.y);
+
+	/*
+	점들 확인
 	//vector2 a(1, 1), b(2, 2), c(2, 2), d(1, 1);//ANSWER=0//1아예 같은 선분인 경우0k//all0
-	//vector2 a(1, 1), b(3, 1), c(2, 1), d(3, 1);//ANSWER=0//2선분이 포함되는 경우0k//all0
-	//vector2 a(1, 1), b(3, 3), c(2, 2), d(4, 4);//ANSWER=0//3선분이 부분겹침되는 경우//all0
+	//vector2 a(1, 1), b(3, 1), c(2, 1), d(3, 1);//ANSWER=0//2선분이 포함되는 경우0k//all0->여리거 지우고 확인
+	//vector2 a(1, 1), b(3, 3), c(2, 2), d(4, 4);//ANSWER=0//3선분이 부분겹침되는 경우//all0->여리거 지우고 확인
 	//vector2 a(1, 1), b(2, 2), c(4, 4), d(3, 3);//ANSWER=1//4선분이 분리되는 경우 all0
 	//vector2 a(1, 1), b(2, 2), c(2, 2), d(3, 3);//ANSWER=1//5선분이 일직선상위 한점에서만 만나는 경우 all0
 	
@@ -98,8 +127,43 @@ bool CMyVector::checkException(CMyVector inputA, CMyVector inputB, CMyVector exi
 	//vector2 a(1, 2), b(2, 3), c(2,2), d(3, 2);//ANSWER=1//9선분이 아예 교차x경우ok//둘이 같은부호==4
 	
 	*/
+	/*->생각 잠시 보류
+	가장먼저 선분끼리 교점이 있는지를 판단
+	-교점이 있는 경우 다른 검사를 진행
+	-교점이 없는 경우 무조건 false
+	*/
+	//paralleSegments();
 	
 	
+}
+int CMyVector::check(int x1, int y1, int x2, int y2)
+{
+	int vec = (x1*y2) - (y1*x2);;
+	if (vec < 0)return -1;
+	if (vec < 0)return -1;
+	if (vec == 0)return 0;
+
+	return 1;
+}
+bool CMyVector::checkbox(int a, int b, int c, int d)
+{
+	if (b < c || d < a)return true;
+	else return false;
+}
+bool CMyVector::checkLineCross(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4)
+{
+	int slop1 = check(x2 - x1, y2 - y1, x3 - x1, y3 - y1);
+	int slop2 = check(x2 - x1, y2 - y1, x4 - x1, y4 - y1);
+	int slop3 = check(x4 - x3, y4 - y3, x1 - x3, y1 - y3);
+	int slop4 = check(x4 - x3, y4 - y3, x2 - x3, y2 - y3);
+	int box1 = checkbox(mi2(x1, x2), ma2(x1, x2), mi2(x3, x4), ma2(x3, x4));
+	int box2 = checkbox(mi2(y1, y2), ma2(y1, y2), mi2(y3, y4), ma2(y3, y4));
+	if ((slop1*slop2) <= 0 && (slop3*slop4) <= 0 && (box1 + box2) == 0) {
+		if ((x1 == x3&&y1 == y3) || (x1 == x4 && y1 == y4) || (x2 == x3&&y2 == y3) || (x2 == x4 && y2 == y4))
+			return false;
+		return true;
+	}
+	return false;
 }
 bool CMyVector::checkDoublePoint(CMyVector inputA, CMyVector inputB, int (*map)[7]) {
 
@@ -128,7 +192,7 @@ bool CMyVector::checkDoublePoint(CMyVector inputA, CMyVector inputB, int (*map)[
 	else
 	{
 		max = inputB.x;
-		min = inputA.x;
+  		min = inputA.x;
 	}
 	if (inputA.y > inputB.y)
 	{
