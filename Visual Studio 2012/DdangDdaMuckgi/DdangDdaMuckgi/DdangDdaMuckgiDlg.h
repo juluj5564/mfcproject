@@ -62,9 +62,13 @@ public:
 
 	//함수 추가
 	CMyVector vec;
+<<<<<<< HEAD
 
 	//점이 15개가 남았을 때 선분의 갯수를 세는 함수
 	void lineCheck();
 	int recursive(int nCount);
+=======
+	
+>>>>>>> 2f947fb90071097fc30fe2cbbd5120963e1fe844
 };
 
