@@ -107,10 +107,7 @@ bool CMyVector::checkException(CMyVector inputA, CMyVector inputB, CMyVector exi
 	//answer = sementIntersects(inputA, inputB, existA, existB);//선을 그릴수 있는가? 그릴수 있으면 TRUE
 	
 
-	
-	
 
-	//return checkLineCross(inputA.x, inputA.y,inputB.x,inputB.y,existA.x,existA.y,existB.x,existB.y);
 
 	/*
 	점들 확인
@@ -136,35 +133,20 @@ bool CMyVector::checkException(CMyVector inputA, CMyVector inputB, CMyVector exi
 	
 	
 }
-int CMyVector::check(int x1, int y1, int x2, int y2)
-{
-	int vec = (x1*y2) - (y1*x2);;
-	if (vec < 0)return -1;
-	if (vec < 0)return -1;
-	if (vec == 0)return 0;
 
-	return 1;
-}
-bool CMyVector::checkbox(int a, int b, int c, int d)
-{
-	if (b < c || d < a)return true;
-	else return false;
-}
-bool CMyVector::checkLineCross(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4)
-{
-	int slop1 = check(x2 - x1, y2 - y1, x3 - x1, y3 - y1);
-	int slop2 = check(x2 - x1, y2 - y1, x4 - x1, y4 - y1);
-	int slop3 = check(x4 - x3, y4 - y3, x1 - x3, y1 - y3);
-	int slop4 = check(x4 - x3, y4 - y3, x2 - x3, y2 - y3);
-	int box1 = checkbox(mi2(x1, x2), ma2(x1, x2), mi2(x3, x4), ma2(x3, x4));
-	int box2 = checkbox(mi2(y1, y2), ma2(y1, y2), mi2(y3, y4), ma2(y3, y4));
-	if ((slop1*slop2) <= 0 && (slop3*slop4) <= 0 && (box1 + box2) == 0) {
-		if ((x1 == x3&&y1 == y3) || (x1 == x4 && y1 == y4) || (x2 == x3&&y2 == y3) || (x2 == x4 && y2 == y4))
-			return false;
-		return true;
-	}
-	return false;
-}
+
+//bool CMyVector::checkLineCross(CMyVector inputA, CMyVector inputB, CMyVector existA, CMyVector existB)
+//{
+//	//float solA = (inputB.y-inputA.y)*(existB.x, existA.x)
+//	//	-(inputA.y-inputA.y)*(existA.x-existB.x);
+//
+//	//if (solA != 0) {
+//	//	a=(inputA.x-inputB.x)*(inputB.y-inputB.x)-(existA.x*existA.y)*(existB.x)
+//	//}
+//
+//	//return false;
+//}
+
 bool CMyVector::checkDoublePoint(CMyVector inputA, CMyVector inputB, int (*map)[7]) {
 
 	double m_slop;   //현재 그리려는 직선의 기울기

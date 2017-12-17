@@ -62,6 +62,8 @@ public:
 
 	//함수 추가
 	CMyVector vec;
+	void strategy1();//1번 전략 :  선을 그을 수 있을 때까지 긋는다
+	//void strategt2();//2번 전략 : 
 	
 };
 
