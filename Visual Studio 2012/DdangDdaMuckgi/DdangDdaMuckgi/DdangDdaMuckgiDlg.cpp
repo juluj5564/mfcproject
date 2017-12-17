@@ -455,7 +455,7 @@ void CDdangDdaMuckgiDlg::OnBnClickedRestart()
 
 	UpdateData(FALSE);
 }
-<<<<<<< HEAD
+
 void CDdangDdaMuckgiDlg::lineCheck() {
 	//점이 15개 남았을 때 선분의 갯수를 세는 함수
 
@@ -611,6 +611,3 @@ int CDdangDdaMuckgiDlg::recursive(int nCount)
 
 	return 0;
 }
-=======
-
->>>>>>> 2f947fb90071097fc30fe2cbbd5120963e1fe844

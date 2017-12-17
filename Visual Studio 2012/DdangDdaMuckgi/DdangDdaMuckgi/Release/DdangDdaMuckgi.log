@@ -1,31 +1,11 @@
-﻿  stdafx.cpp
-  DdangDdaMuckgi.cpp
+﻿  DdangDdaMuckgiDlg.cpp
 c:\opencv2.1\include\opencv\cvcompat.h(803): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-<<<<<<< HEAD
-  DdangDdaMuckgiDlg.cpp
-c:\opencv2.1\include\opencv\cvcompat.h(803): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  MyVector.cpp
-MyVector.cpp(125): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-MyVector.cpp(126): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-MyVector.cpp(130): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-MyVector.cpp(131): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-MyVector.cpp(135): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-MyVector.cpp(136): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-MyVector.cpp(140): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-MyVector.cpp(141): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+DdangDdaMuckgiDlg.cpp(323): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   코드를 생성하고 있습니다.
-  220 of 227 functions (96.9%) were compiled, the rest were copied from previous compilation.
-    31 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+c:\users\user\documents\github\mfcproject\visual studio 2012\ddangddamuckgi\ddangddamuckgi\myvector.cpp(138): warning C4715: 'CMyVector::checkException': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  4 of 220 functions ( 1.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    5 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   DdangDdaMuckgi.vcxproj -> C:\Users\USER\Documents\GitHub\mfcproject\Visual Studio 2012\DdangDdaMuckgi\Release\DdangDdaMuckgi.exe
   DdangDdaMuckgi.vcxproj -> C:\Users\USER\Documents\GitHub\mfcproject\Visual Studio 2012\DdangDdaMuckgi\Release\DdangDdaMuckgi.pdb (Full PDB)
-=======
-DdangDdaMuckgiDlg.cpp(323): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  코드를 생성하고 있습니다.
-  3 of 220 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  코드를 생성했습니다.
-  DdangDdaMuckgi.vcxproj -> C:\Users\심다슬\Source\Repos\mfcproject\Visual Studio 2012\DdangDdaMuckgi\Release\DdangDdaMuckgi.exe
->>>>>>> 2f947fb90071097fc30fe2cbbd5120963e1fe844
