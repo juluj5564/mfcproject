@@ -12,7 +12,7 @@
 #include "MyVector.h"
 
 
-// CDdangDdaMuckgiDlg 대화 상자
+// CDdangDdaMuckgiDlg 대화 상자 
 class CDdangDdaMuckgiDlg : public CDialogEx
 {
 // 생성입니다.
@@ -62,5 +62,9 @@ public:
 
 	//함수 추가
 	CMyVector vec;
+
+	//점이 15개가 남았을 때 선분의 갯수를 세는 함수
+	void lineCheck();
+	int recursive(int nCount);
 };
 
