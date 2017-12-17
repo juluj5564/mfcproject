@@ -30,7 +30,7 @@ public:
 	static bool sementIntersects(CMyVector a, CMyVector b, CMyVector c, CMyVector d);//두 선분이 서로 접촉하는지 여부를 반환
 	static bool checkException(CMyVector inputA, CMyVector inputB, CMyVector existA, CMyVector existB);
 	//static bool paralleSegments(CMyVector a, CMyVector b, CMyVector c, CMyVector d, CMyVector& p); //점 a, b와 점 c, d가 평행한 두 선분 일 때 이들이 한 점에서 겹치는지 확인한다.
-	static bool checkLineCross(CMyVector inputA, CMyVector inputB, CMyVector existA, CMyVector existB);
+	//static bool checkLineCross(CMyVector inputA, CMyVector inputB, CMyVector existA, CMyVector existB);
 	static bool checkDoublePoint(CMyVector inputA, CMyVector inputB, int(*map)[7]);
 };
 

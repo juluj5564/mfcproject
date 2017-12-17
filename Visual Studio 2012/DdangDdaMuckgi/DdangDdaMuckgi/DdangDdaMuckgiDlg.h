@@ -62,18 +62,14 @@ public:
 
 	//함수 추가
 	CMyVector vec;
-<<<<<<< HEAD
+
 	void strategy1();//1번 전략 :  선을 그을 수 있을 때까지 긋는다
 	//void strategt2();//2번 전략 : 
 	
-=======
-
 
 	//점이 15개가 남았을 때 선분의 갯수를 세는 함수
 	void lineCheck();
-
 	int recursive(int nCount);
 
->>>>>>> beeb8fbc3567e0df63a284c948ce91dc4b47941f
 };
 
